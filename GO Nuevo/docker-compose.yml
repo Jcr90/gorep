@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      DB_USER: root
+      DB_PASSWORD: Sel500gq.19.
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: godb
+    volumes:
+      - .:/app
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Sel500gq.19.
+      MYSQL_DATABASE: godb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Sel500gq.19.
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
